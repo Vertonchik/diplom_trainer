@@ -1,0 +1,54 @@
+@import 'styles/config.scss';
+
+.Navbar {
+
+  &-Left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 700px;
+    width: 100%;
+  }
+
+  &-Logo {
+    cursor: pointer;
+    max-width: 200px;
+  }
+
+  &-Nav {
+    &-Item {
+      padding: 0 20px;
+      font-size: 16px;
+      color: $white;
+      &.active {
+        color: $blue;
+      }
+    }
+  }
+
+  &-Avatar {
+    width: 40px;
+    height: 40px;
+    background-color: $blue;
+    color: $white;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &-Login {
+    width: 150px;
+  }
+
+
+  &-Popup {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    & > button {
+      border-radius: 0;
+      &:hover {
+        background-color: $black;
+      }
+    }
+  }
+}

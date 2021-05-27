@@ -1,0 +1,23 @@
+.Register {
+  &-Title {
+    color: #000;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  &-MainForm {
+    & > div {
+      margin-bottom: 30px;
+    }
+    & > button {
+      width: 100%;
+    }
+  }
+
+  &-Additional {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,17 @@
+.MoviePreview {
+  display: flex;
+  flex-direction: column;
+
+  &-Image {
+    width: 400px;
+  }
+
+  &-MovieActions {
+
+  }
+
+  &-Action {
+    width: 100%;
+    margin-top: 15px !important;
+  }
+}
