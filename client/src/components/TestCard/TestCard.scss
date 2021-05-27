@@ -1,0 +1,116 @@
+@import 'styles/config.scss';
+
+.TestCard {
+  position: relative;
+  width: 233px;
+  height: 317px;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 20px;
+  &-Wrapper {
+    margin-bottom: 10px;
+  }
+
+  &-Image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: all .5s;
+  }
+
+  &:hover {
+    .TestCard-Image {
+      transform: scale(1.2);
+      transition: all .5s;
+    }
+  }
+
+  &-Rating {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 9px 22px;
+    background: #000;
+    opacity: .6;
+    color: $white;
+  }
+
+  &-Type {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 9px 22px;
+    background: #000;
+    opacity: .6;
+    color: $white;
+  }
+
+  &-Name {
+    text-align: center;
+  }
+
+
+  &-Overlay {
+    background-color: #000;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+  }
+
+  &:hover {
+    .TestCard-Overlay {
+      display: block;
+      opacity: .5;
+    }
+  }
+
+  &-OverlayInfo {
+    opacity: 0;
+    transition: 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    &-NameEn {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    &-NameRu {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    &-Genres {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    &-Year {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    &-Description {
+      font-size: 14px;
+      line-height: 1.3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 130px;
+    }
+  }
+
+  &:hover {
+    .TestCard-OverlayInfo {
+      transition: 0.3s;
+      opacity: .8;
+    }
+  }
+}

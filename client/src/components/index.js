@@ -1,4 +1,4 @@
 export { Navbar } from './Navbar/Navbar';
 export { AuthModal } from './AuthModal/AuthModal';
-export { MovieCard } from './MovieCard/MovieCard';
-export { MoviePreview } from './MoviePreview/MoviePreview';
+export { TestCard } from './TestCard/TestCard';
+export { TestPreview } from './TestPreview/TestPreview';

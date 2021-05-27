@@ -2,22 +2,22 @@ import React, { useEffect } from 'react';
 import { cnMain, mapStateToProps, mapDispatchToProps } from './Main.index';
 import { connect } from 'react-redux';
 import './Main.scss';
-import { MovieCard } from 'components';
+import { TestCard } from 'components';
 
 const Component = ({
-  movies,
-  getMoviesList
+  tests,
+  getTestsList
 }) => {
   
   useEffect(() => {
-    if (!movies.length) getMoviesList();
+    if (!tests.length) getTestsList();
   }, [])
 
   return (
     <div className={cnMain()} style={{height: '1500px'}}>
 
-      <div className={cnMain('Movies')}>
-      {movies && movies.map((movie) => <MovieCard key={movie._id} data={movie} />)}
+      <div className={cnMain('Tests')}>
+      {tests && tests.map((test) => <TestCard key={test._id} data={test} />)}
       </div>
       
       

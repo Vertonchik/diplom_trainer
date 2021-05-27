@@ -29,13 +29,13 @@ if (process.env.NODE_ENV === 'development') {
 
 // Load all routes
 const authRouter = require('./routes/auth.route');
-const movieRouter = require('./routes/movie.route');
+const testRouter = require('./routes/test.route');
 // const videoRouter = require('./routes/video.route');
 // const fileRouter = require('./routes/file.route');
 
 // Use Routes
 // app.use('/static', express.static(`${__dirname}/static/`));
-app.use('/api/movie/', movieRouter);
+app.use('/api/test/', testRouter);
 app.use('/api/', authRouter);
 
 

@@ -22,9 +22,9 @@ export const countriesNames = {
 }
 export const countries = Object.keys(countriesNames).map(key => ({ value: key, title: countriesNames[key] }));
 
-export const movieTypeNames = {
-  movie: 'Фильм',
+export const testTypeNames = {
+  test: 'Фильм',
   series: 'Сериал',
   cartoon: 'Мультфильм'
 }
-export const movieTypes = Object.keys(movieTypeNames).map(key => ({ value: key, title: movieTypeNames[key] }));
+export const testTypes = Object.keys(testTypeNames).map(key => ({ value: key, title: testTypeNames[key] }));

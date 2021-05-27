@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import { MainPage } from 'admin/pages/MainPage/MainPage';
-import { MoviesPage } from 'admin/pages/MoviesPage/MoviesPage';
-import { MoviePage } from 'admin/pages/MoviePage/MoviePage';
+import { TestsPage } from 'admin/pages/TestsPage/TestsPage';
+import { TestPage } from 'admin/pages/TestPage/TestPage';
 
 const Component = ({
   user,
@@ -23,8 +23,8 @@ const Component = ({
     <div className={classname()}>
       <Switch>
         <Route path={`/admin/`} exact component={MainPage} />
-        <Route path={`/admin/movies/`} exact component={MoviesPage} />
-        <Route path='/admin/movies/:movieId/:tab' exact component={MoviePage} />
+        <Route path={`/admin/tests/`} exact component={TestsPage} />
+        <Route path='/admin/tests/:testId/:tab' exact component={TestPage} />
       </Switch>
       
     </div>

@@ -1,0 +1,46 @@
+.AdminTestVideos {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 6px;
+  margin-top: 20px;
+
+  &-Summry {
+    color: #000;
+    & > div {
+      color: #000;
+      & > div {
+        color: #000;
+      }
+    }
+  }
+
+  &-Details {
+    color: #000;
+    width: 100%;
+    & > div {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      & > div {
+        margin-right: 15px;
+      }
+    }
+
+    &-Upload {
+      display: flex;
+      align-items: center;
+      width: 100%;  
+      & > div {
+        margin-right: 10px;
+      }
+    }
+  }
+
+
+
+  &-Add {
+    margin-top: 25px !important;
+  }
+
+}
