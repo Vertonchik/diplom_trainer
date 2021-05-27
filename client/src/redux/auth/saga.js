@@ -27,14 +27,11 @@ function* loginSaga() {
     const { email, password } = yield select(selectAuthData);
     if (email && password) {
       const res = yield call(loginRequest, { email, password });
-      if (res.data.success && res.data.user.verified) {
+      if (res.data.success) {
         yield call(authenticate, res);
         const user = res.data.user
         yield put(setAuth({ token: res.data.token, user: {...user, isAdmin: user.roles.includes('ADMIN')}, isAuth: true }));
-      } else if (res.data.success && !res.data.user.verified) { // если пользователь не подтвердил почту
-        yield put(changeAuthData({ type: 'activation' }));
-      }
-      else {
+      } else {
         yield put(changeAuthData({ password: '' }));
         toast.error(res.err);
       }
@@ -68,30 +65,6 @@ function* registartionSaga() {
     }
   } catch (e) {
     console.error('registration error', e);
-  }
-}
-
-function* activationSaga() {
-  try {
-    const { email, code } = yield select(selectAuthData);
-    console.log(email, code);
-    if (code) {
-      if (code.length === 4) {
-        const res = yield call(activationRequest, email, code);
-        if (res.data.success) {
-          // yield call(authenticate, res);
-          // yield put(setAuth({ token: res.data.token, user: res.data.user, isAuth: true }));
-        } else {
-          toast.error(res.err);
-        }
-      } else {
-        toast.error('Введите правильный код');
-      }
-    } else {
-      toast.error('Введите код подтверждения');
-    }
-  } catch(e) {
-    console.error('activation error', e);
   }
 }
 

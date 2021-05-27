@@ -8,7 +8,6 @@ const baseState = {
     password: '',
     password1: '',
     password2: '',
-    code: '',
     type: 'login',
     open: false,
   },
