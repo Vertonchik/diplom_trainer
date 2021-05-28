@@ -14,9 +14,14 @@ exports.getTestController = async (req, res) => {
   try {
     const { testId } = req.query;
 
-    const test = await Test.findById(testId).lean();
+    const promises = [
+      Test.findById(movieId).lean(),
+      Video.find({ movieId }).lean()
+    ]
 
-    res.json({ success: true, test });
+    const [test, videos] = await Promise.all(promises);
+
+    res.json({ success: true, test: {...test, videos} });
   } catch (e) {
     console.log(e);
     res.status(500).json({ success: false, err: 'Server error' });
