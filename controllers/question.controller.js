@@ -1,47 +1,47 @@
-const Video = require('../models/Video.model');
+const Question = require('../models/Question.model');
 const fs = require('fs');
 
 
-exports.videoController = async (req, res) => {
+exports.questionController = async (req, res) => {
   try {
     const { movieId } = req.query;
-    const videos = await Video.find({ movieId })
-    res.json({ success: true, videos });
+    const questions = await Question.find({ movieId })
+    res.json({ success: true, questions });
   } catch (e) {
     res.status(500).json({ success: false, err: 'Server error' });
   }
 }
 
-exports.createVideoController = async (req, res) => {
+exports.createQuestionController = async (req, res) => {
   try {
     const {movieId, data} = req.body;
 
-    const urlItems = data.videoUrl.split('/');
+    const urlItems = data.questionUrl.split('/');
     const alias = urlItems[urlItems.length - 1];
 
     data.movieId = movieId;
     data.alias = alias;
 
-    const video = await Video.create(data);
-    res.json({ success: true, video });
+    const question = await Question.create(data);
+    res.json({ success: true, question });
   } catch (e) {
     console.log(e);
     res.status(500).json({ success: false, err: 'Server error' });
   }
 }
 
-exports.updateVideoController = async (req, res) => {
+exports.updateQuestionController = async (req, res) => {
   try {
     const {movieId, data} = req.body;
     delete data.expanded;
 
-    const urlItems = data.videoUrl.split('/');
+    const urlItems = data.questionUrl.split('/');
     const alias = urlItems[urlItems.length - 1];
 
     data.alias = alias;
 
-    const video = await Video.findByIdAndUpdate(data._id, data);
-    res.json({ success: true, video });
+    const question = await Question.findByIdAndUpdate(data._id, data);
+    res.json({ success: true, question });
   } catch (e) {
     console.log(e);
     res.status(500).json({ success: false, err: 'Server error' });

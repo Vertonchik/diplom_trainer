@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { classname, mapStateToProps, mapDispatchToProps } from './TestVideos.index';
-import './TestVideos.scss';
+import { classname, mapStateToProps, mapDispatchToProps } from './TestQuestions.index';
+import './TestQuestions.scss';
 import { connect } from 'react-redux';
 import { Button, Input, } from 'UI';
 import { useParams } from 'react-router-dom';
@@ -13,15 +13,15 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const Component = ({
   data,
   list,
-  changeVideo,
-  addVideoToList,
-  updateVideo, 
-  createVideo,
+  changeQuestion,
+  addQuestionToList,
+  updateQuestion, 
+  createQuestion,
 }) => {
 
   const { testId } = useParams();
 
-  const onChange = (id, changedData) => changeVideo({ videoId: id, data: changedData })
+  const onChange = (id, changedData) => changeQuestion({ questionId: id, data: changedData })
 
   const changeExpanded = (id) => {
     data[id].expanded ? onChange(id, { expanded: false }) : onChange(id, { expanded: id });
@@ -31,14 +31,14 @@ const Component = ({
     <div className={classname()}>
       <div>
         {list?.map(id => {
-          const video = data[id];
+          const question = data[id];
           return (
-            <Accordion key={id} expanded={video.expanded === id} onChange={() => changeExpanded(id)}>
+            <Accordion key={id} expanded={question.expanded === id} onChange={() => changeExpanded(id)}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <div className={classname('Summry')}>
                   <div>
-                    <div>{video.nameRu}</div>
-                    <div>{video.nameEn}</div>
+                    <div>{question.nameTest}</div>
+                    <div>{question.nameEn}</div>
                   </div>
                 </div>
               </AccordionSummary>
@@ -47,13 +47,13 @@ const Component = ({
                 <div className={classname('Details')}>
                   <div>
                     <Input
-                      value={video.nameRu}
+                      value={question.nameTest}
                       label={'Название на русском'}
-                      onChange={nameRu => onChange(id, { nameRu })}
+                      onChange={nameTest => onChange(id, { nameTest })}
                     />
 
                     <Input
-                      value={video.nameEn}
+                      value={question.nameEn}
                       label={'Название на английском'}
                       onChange={nameEn => onChange(id, { nameEn })}
                     />
@@ -62,14 +62,14 @@ const Component = ({
                   <div>
                     <Input
                       multiline
-                      value={video.descriptionRu}
+                      value={question.descriptionTest}
                       label={'Описание на русском'}
-                      onChange={descriptionRu => onChange(id, { descriptionRu })}
+                      onChange={descriptionTest => onChange(id, { descriptionTest })}
                     />
 
                     <Input
                       multiline
-                      value={video.descriptionEn}
+                      value={question.descriptionEn}
                       label={'Описание на английском'}
                       onChange={descriptionEn => onChange(id, { descriptionEn })}
                     />
@@ -77,13 +77,13 @@ const Component = ({
 
                   <div>
                     <Input
-                      value={video.durationMin}
+                      value={question.durationMin}
                       label={'Продолжительность в минутах'}
                       onChange={durationMin => onChange(id, { durationMin })}
                     />
 
                     <Input
-                      value={video.durationSec}
+                      value={question.durationSec}
                       label={'Продолжительность в секундах'}
                       onChange={durationSec => onChange(id, { durationSec })}
                     />
@@ -91,9 +91,9 @@ const Component = ({
 
                   <div>
                     <div className={classname('Details-Upload')}>
-                      {console.log('DATA', video)}
+                      {console.log('DATA', question)}
                       <Input
-                        value={video.subtitlesUrlRu}
+                        value={question.subtitlesUrlRu}
                         label={'Ссылка на русские субтитры'}
                         onChange={subtitlesUrlRu => onChange(id, { subtitlesUrlRu })}
                       />
@@ -102,7 +102,7 @@ const Component = ({
 
                     <div className={classname('Details-Upload')}>
                       <Input
-                        value={video.subtitlesUrlEn}
+                        value={question.subtitlesUrlEn}
                         label={'Ссылка на английские субтитры'}
                         onChange={subtitlesUrlEn => onChange(id, { subtitlesUrlEn })}
                       />
@@ -113,18 +113,18 @@ const Component = ({
                   <div>
                     <div className={classname('Details-Upload')}>
                       <Input
-                        value={video.videoUrl}
+                        value={question.questionUrl}
                         label={'Ссылка на видео'}
-                        onChange={videoUrl => onChange(id, { videoUrl })}
+                        onChange={questionUrl => onChange(id, { questionUrl })}
                       />
                       
                     </div>
                   </div>
 
                   <Button onClick={() => {
-                    video.isNew ? createVideo({videoId: id}) : updateVideo({videoId: id})
+                    question.isNew ? createQuestion({questionId: id}) : updateQuestion({questionId: id})
                   }} variant='contained'>
-                    {video.isNew ? 'Создать' : 'Изменить'}
+                    {question.isNew ? 'Создать' : 'Изменить'}
                   </Button>
 
                 </div>
@@ -134,11 +134,11 @@ const Component = ({
         })}
       </div>
 
-      <Button className={classname('Add')} variant='contained' onClick={() => addVideoToList(testId)}>
+      <Button className={classname('Add')} variant='contained' onClick={() => addQuestionToList(testId)}>
         Добавить
       </Button>
     </div>
   )
 }
 
-export const TestVideos = connect(mapStateToProps, mapDispatchToProps)(Component);
+export const TestQuestions = connect(mapStateToProps, mapDispatchToProps)(Component);

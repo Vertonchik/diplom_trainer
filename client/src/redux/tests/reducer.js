@@ -8,8 +8,8 @@ const baseState = {
  },
  currentTest: {
   data: undefined,
-  adminVideos: undefined,
-  videosList: undefined,
+  adminQuestions: undefined,
+  questionsList: undefined,
   loading: false
  }
 }
@@ -57,16 +57,16 @@ export const testsReducer = (state = baseState, action) => {
       }
     }
 
-    case actionTypes.CHANGE_TEST_VIDEO: {
-      const { videoId, data } = action.payload;
+    case actionTypes.CHANGE_TEST_QUESTION: {
+      const { questionId, data } = action.payload;
       return {
         ...state,
         currentTest: {
           ...state.currentTest,
-          adminVideos: {
-            ...state.currentTest.adminVideos,
-            [videoId]: {
-              ...state.currentTest.adminVideos[videoId],
+          adminQuestions: {
+            ...state.currentTest.adminQuestions,
+            [questionId]: {
+              ...state.currentTest.adminQuestions[questionId],
               ...data
             }
           }
@@ -74,29 +74,29 @@ export const testsReducer = (state = baseState, action) => {
       }
     }
 
-    case actionTypes.ADD_VIDEO_TO_LIST: {
+    case actionTypes.ADD_QUESTION_TO_LIST: {
       const id = uuid();
 
       return {
         ...state,
         currentTest: {
           ...state.currentTest,
-          adminVideos: {
-            ...state.currentTest.adminVideos,
+          adminQuestions: {
+            ...state.currentTest.adminQuestions,
             [id]: {
               testId: action.payload,
               subtitlesUrlRu: undefined,
               subtitlesUrlEn: undefined,
-              videoUrl: undefined,
+              questionUrl: undefined,
               words: [],
               nameEn: '',
-              nameRu: 'Новое видео',
+              nameTest: 'Новое видео',
               durationMin: 0,
               durationSec: 0,
               isNew: true,
             }
           },
-          videosList: [...state.currentTest.videosList, id],
+          questionsList: [...state.currentTest.questionsList, id],
         }
       }
     }

@@ -8,10 +8,10 @@ export const actionTypes = {
   DELETE_TEST: 'DELETE_TEST',
   CLEAR_CURRENT_TEST: 'CLEAR_CURRENT_TEST',
   CHANGE_CURRENT_TEST: 'CHANGE_CURRENT_TEST',
-  CHANGE_TEST_VIDEO: 'CHANGE_TEST_VIDEO',
-  ADD_VIDEO_TO_LIST: 'ADD_VIDEO_TO_LIST',
-  UPDATE_VIDEO: 'UPDATE_VIDEO',
-  CREATE_VIDEO: 'CREATE_VIDEO',
+  CHANGE_TEST_QUESTION: 'CHANGE_TEST_QUESTION',
+  ADD_QUESTION_TO_LIST: 'ADD_QUESTION_TO_LIST',
+  UPDATE_QUESTION: 'UPDATE_QUESTION',
+  CREATE_QUESTION: 'CREATE_QUESTION',
 }
 
 /********************************************
@@ -55,18 +55,18 @@ export const createTest = payload => ({
 })
 
 /**
-* @param {object} payload {videoId}
+* @param {object} payload {questionId}
 */
-export const updateVideo = payload => ({
-  type: actionTypes.UPDATE_VIDEO,
+export const updateQuestion = payload => ({
+  type: actionTypes.UPDATE_QUESTION,
   payload
 })
 
 /**
-* @param {object} payload {videoId}
+* @param {object} payload {questionId}
 */
-export const createVideo = payload => ({
-  type: actionTypes.CREATE_VIDEO,
+export const createQuestion = payload => ({
+  type: actionTypes.CREATE_QUESTION,
   payload
 })
 
@@ -95,17 +95,17 @@ export const changeCurrentTest = payload => ({
 })
 
 /**
- * @param {} payload {videoId, data} 
+ * @param {} payload {questionId, data} 
  */
-export const changeVideo = payload => ({
-  type: actionTypes.CHANGE_TEST_VIDEO,
+export const changeQuestion = payload => ({
+  type: actionTypes.CHANGE_TEST_QUESTION,
   payload
 })
 
 /**
  * @param {string} payload id
  */
-export const addVideoToList = payload => ({
-  type: actionTypes.ADD_VIDEO_TO_LIST,
+export const addQuestionToList = payload => ({
+  type: actionTypes.ADD_QUESTION_TO_LIST,
   payload
 })

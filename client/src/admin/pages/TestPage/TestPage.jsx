@@ -6,7 +6,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { Tabs } from 'UI';
 
 import { TestMain } from 'admin/components/TestMain/TestMain';
-import { TestVideos } from 'admin/components/TestVideos/TestVideos';
+import { TestQuestions } from 'admin/components/TestQuestions/TestQuestions';
 
 const Component = ({ data, getCurrentTest, setCurrentTest }) => {
 
@@ -15,12 +15,12 @@ const Component = ({ data, getCurrentTest, setCurrentTest }) => {
 
   useEffect(() => {
     if (testId !== 'add') getCurrentTest({testId, isAdmin: true});
-    else setCurrentTest({data: defaultTest, adminVideos: {}});
+    else setCurrentTest({data: defaultTest, adminQuestions: {}});
   }, [])
 
   const items = [
-    { title: 'Основное', value: 'main' },
-    { title: 'Видео', value: 'videos' },
+    { title: 'Тест', value: 'main' },
+    { title: 'Вопросы', value: 'questions' },
   ]
 
   if (!data) return null;
@@ -33,7 +33,7 @@ const Component = ({ data, getCurrentTest, setCurrentTest }) => {
 
       <div>
         {tab === 'main' && <TestMain />}
-        {tab === 'videos' && <TestVideos />}
+        {tab === 'questions' && <TestQuestions />}
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { v1 as uuid } from 'uuid';
 
 const baseState = {
   open: false,
-  video: undefined,
+  question: undefined,
 }
 
 export const playerReducer = (state = baseState, action) => {
@@ -16,10 +16,10 @@ export const playerReducer = (state = baseState, action) => {
       }
     }
 
-    case actionTypes.SET_PLAYER_VIDEO: {
+    case actionTypes.SET_PLAYER_QUESTION: {
       return {
         ...state,
-        video: action.payload
+        question: action.payload
       }
     }
     

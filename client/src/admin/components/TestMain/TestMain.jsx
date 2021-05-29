@@ -23,9 +23,9 @@ const Component = ({
     <div className={classname()}>
       <div className={classname('Left')}>
         <Input
-          value={data.nameRu}
-          label={'Название на русском'}
-          onChange={nameRu => changeCurrentTest({ nameRu })}
+          value={data.nameTest}
+          label={'Название теста'}
+          onChange={nameTest => changeCurrentTest({ nameTest })}
         />
 
         <Input
@@ -36,9 +36,9 @@ const Component = ({
 
         <Input
           multiline
-          value={data.descriptionRu}
+          value={data.descriptionTest}
           label={'Описание на русском'}
-          onChange={descriptionRu => changeCurrentTest({ descriptionRu })}
+          onChange={descriptionTest => changeCurrentTest({ descriptionTest })}
         />
 
         <Input

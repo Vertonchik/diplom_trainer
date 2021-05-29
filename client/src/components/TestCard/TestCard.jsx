@@ -22,7 +22,7 @@ export const TestCard = ({
 
       <div className={cnTestCard('OverlayInfo')}>
         <div className={cnTestCard('OverlayInfo-NameEn')}>{data.nameEn}</div>
-        <div className={cnTestCard('OverlayInfo-NameRu')}>{data.nameRu}</div>
+        <div className={cnTestCard('OverlayInfo-NameTest')}>{data.nameTest}</div>
         <div className={cnTestCard('OverlayInfo-Genres')}>{data.genres.join(', ')}</div>
         <div className={cnTestCard('OverlayInfo-Year')}>{data.yearEnd}</div>
         <div className={cnTestCard('OverlayInfo-Description')}>{data.descriptionEn}</div>

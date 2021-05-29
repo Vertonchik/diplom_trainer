@@ -7,5 +7,5 @@ export const updateTestRequest = (data) => axios.put('/test/update', data);
 export const createTestRequest = (data) => axios.post('/test/create', data);
 export const deleteTestRequest = (testId) => axios.post('/test/delete', {testId});
 
-export const updateVideoRequest = (testId, data) => axios.put('/videos/update', {testId, data});
-export const createVideoRequest = (testId, data) => axios.post('/videos/create', {testId, data});
+export const updateQuestionRequest = (testId, data) => axios.put('/questions/update', {testId, data});
+export const createQuestionRequest = (testId, data) => axios.post('/questions/create', {testId, data});

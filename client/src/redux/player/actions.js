@@ -1,6 +1,6 @@
 export const actionTypes = {
   SET_PLAYER_OPEN: 'SET_PLAYER_OPEN',
-  SET_PLAYER_VIDEO: 'SET_PLAYER_VIDEO',
+  SET_PLAYER_QUESTION: 'SET_PLAYER_QUESTION',
 }
 
 /********************************************
@@ -24,7 +24,7 @@ export const setPlayerOpen = payload => ({
 /**
  * @param {*} payload 
  */
-export const setPlayerVideo = payload => ({
-  type: actionTypes.SET_PLAYER_VIDEO,
+export const setPlayerQuestion = payload => ({
+  type: actionTypes.SET_PLAYER_QUESTION,
   payload
 })

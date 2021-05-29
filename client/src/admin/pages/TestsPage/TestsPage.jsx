@@ -32,7 +32,7 @@ const Component = ({ data, getTestsList, deleteTest }) => {
 
             <img src={test.imgUrl} />
             <div>
-              <div>{test.nameRu}</div>
+              <div>{test.nameTest}</div>
               <div>{test.nameEn}</div>
             </div>
 

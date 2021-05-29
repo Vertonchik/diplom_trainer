@@ -15,17 +15,10 @@ export const mapDispatchToProps = (dispatch) => bindActionCreators({
 const currYear = new Date().getFullYear();
 
 export const defaultTest = {
-  nameId: '',
-  nameRu: '',
-  nameEn: '',
-  descriptionEn: '',
-  descriptionRu: '',
-  imgUrl: '',
-  yearStart: currYear,
-  yearEnd: currYear,
-  genres: [],
-  rating: 0,
-  countries: [],
+  testId: '',
+  title: '',
+  description: '',
+  testPassword: '',
   testType: 'test',
 }
 

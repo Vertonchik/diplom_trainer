@@ -1,11 +1,11 @@
 import { takeLatest, takeLeading, call, put, select } from 'redux-saga/effects';
-import { actionTypes, setTestsList, setCurrentTest, changeVideo } from './actions';
+import { actionTypes, setTestsList, setCurrentTest, changeQuestion } from './actions';
 import {
   getTestsListRequest, getTestRequest,
   updateTestRequest, createTestRequest, deleteTestRequest,
-  updateVideoRequest, createVideoRequest
+  updateQuestionRequest, createQuestionRequest
 } from 'utils/requests/tests';
-import { selectCurrentTest, selectVideoById, selectTestsList } from './selectors';
+import { selectCurrentTest, selectQuestionById, selectTestsList } from './selectors';
 import { toast } from 'react-toastify';
 
 
@@ -26,14 +26,14 @@ function* getCurrentTestSaga(action) {
     yield put(setCurrentTest({ loading: true }));
     const response = yield call(getTestRequest, testId, userData);
     const test = response.data.test;
-    const videos = {};
-    const videosList = []
-    test.videos.forEach(video => {
-      videos[video._id] = video;
-      videosList.push(video._id);
+    const questions = {};
+    const questionsList = []
+    test.questions.forEach(question => {
+      questions[question._id] = question;
+      questionsList.push(question._id);
     });
 
-    yield put(setCurrentTest({ data: test, videos, videosList }));
+    yield put(setCurrentTest({ data: test, questions, questionsList }));
 
     yield put(setCurrentTest({ loading: false }));
   } catch (e) {
@@ -88,39 +88,39 @@ function* deleteTestSaga(action) {
   }
 }
 
-function* updateVideoSaga(action) {
+function* updateQuestionSaga(action) {
   try {
-    const { videoId } = action.payload;
+    const { questionId } = action.payload;
     const test = yield select(selectCurrentTest);
-    const video = yield select(selectVideoById(videoId));
-    const response = yield call(updateVideoRequest, test.data._id, video);
+    const question = yield select(selectQuestionById(questionId));
+    const response = yield call(updateQuestionRequest, test.data._id, question);
     if (response.data.success) {
       toast.success('Данные серии изменены');
     } else {
       toast.error('Ошибка');
     }
   } catch (e) {
-    console.error('update video error', e);
+    console.error('update question error', e);
   }
 }
 
-function* createVideoSaga(action) {
+function* createQuestionSaga(action) {
   try {
-    const { videoId } = action.payload;
+    const { questionId } = action.payload;
     const test = yield select(selectCurrentTest);
-    const video = yield select(selectVideoById(videoId));
-    const requestVideo = {...video};
-    delete requestVideo.isNew;
-    const response = yield call(createVideoRequest, test.data._id, video);
+    const question = yield select(selectQuestionById(questionId));
+    const requestQuestion = {...question};
+    delete requestQuestion.isNew;
+    const response = yield call(createQuestionRequest, test.data._id, question);
     if (response.data.success) {
-      console.log('video created');
-      yield put(changeVideo({ videoId, data: { isNew: false } }));
+      console.log('question created');
+      yield put(changeQuestion({ questionId, data: { isNew: false } }));
       toast.success('Видео создано');
     } else {
       toast.error('Ошибка');
     }
   } catch (e) {
-    console.error('createvideo error', e);
+    console.error('createquestion error', e);
   }
 }
 
@@ -132,8 +132,8 @@ const tests = function* () {
   yield takeLeading(actionTypes.CREATE_TEST, createTestSaga);
   yield takeLeading(actionTypes.DELETE_TEST, deleteTestSaga);
 
-  yield takeLeading(actionTypes.UPDATE_VIDEO, updateVideoSaga);
-  yield takeLeading(actionTypes.CREATE_VIDEO, createVideoSaga);
+  yield takeLeading(actionTypes.UPDATE_QUESTION, updateQuestionSaga);
+  yield takeLeading(actionTypes.CREATE_QUESTION, createQuestionSaga);
 }
 
 export default tests;

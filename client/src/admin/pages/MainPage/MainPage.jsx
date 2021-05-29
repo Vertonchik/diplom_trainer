@@ -9,7 +9,7 @@ export const MainPage = () => {
   return (
     <div className={classname()}>
       <NavLink to='/admin/tests'>
-        <Button  variant='contained'>Фильмы</Button>
+        <Button  variant='contained'>Тесты</Button>
       </NavLink>
       
 

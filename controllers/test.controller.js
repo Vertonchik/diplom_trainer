@@ -1,5 +1,5 @@
 const Test = require('../models/Test.model');
-// const Video = require('../models/Video.model');
+// const Question = require('../models/Question.model');
 
 exports.listController = async (req, res) => {
   try {
@@ -16,12 +16,12 @@ exports.getTestController = async (req, res) => {
 
     const promises = [
       Test.findById(movieId).lean(),
-      Video.find({ movieId }).lean()
+      Question.find({ movieId }).lean()
     ]
 
-    const [test, videos] = await Promise.all(promises);
+    const [test, questions] = await Promise.all(promises);
 
-    res.json({ success: true, test: {...test, videos} });
+    res.json({ success: true, test: {...test, questions} });
   } catch (e) {
     console.log(e);
     res.status(500).json({ success: false, err: 'Server error' });
