@@ -48,7 +48,7 @@ function* updateTestSaga(action) {
     const response = yield call(updateTestRequest, data.data);
     if (response.data.success) {
       cb(response.data.test._id);
-      toast.success('Данные фильма изменены');
+      toast.success('Данные теста изменены');
     } else {
       toast.error('Ошибка');
     }
@@ -64,7 +64,7 @@ function* createTestSaga(action) {
     const response = yield call(createTestRequest, data.data);
     if (response.data.success) {
       yield call(cb, response.data.test._id);
-      toast.success('Фильм создан');
+      toast.success('Тест создан');
     } else {
       toast.error('Ошибка');
     }
@@ -79,7 +79,7 @@ function* deleteTestSaga(action) {
     if (response.data.success) {
       const tests = yield select(selectTestsList);
       yield put(setTestsList({ data: tests.data.filter(test => test._id !== action.payload) }));
-      toast.success('Фильм удалён');
+      toast.success('Тест удалён');
     } else {
       toast.error('Ошибка');
     }
@@ -115,7 +115,7 @@ function* createQuestionSaga(action) {
     if (response.data.success) {
       console.log('question created');
       yield put(changeQuestion({ questionId, data: { isNew: false } }));
-      toast.success('Видео создано');
+      toast.success('Вопрос создан');
     } else {
       toast.error('Ошибка');
     }

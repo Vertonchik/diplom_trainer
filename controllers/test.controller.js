@@ -1,5 +1,5 @@
 const Test = require('../models/Test.model');
-// const Question = require('../models/Question.model');
+const Question = require('../models/Question.model');
 
 exports.listController = async (req, res) => {
   try {
@@ -15,8 +15,8 @@ exports.getTestController = async (req, res) => {
     const { testId } = req.query;
 
     const promises = [
-      Test.findById(movieId).lean(),
-      Question.find({ movieId }).lean()
+      Test.findById(testId).lean(),
+      Question.find({ testId }).lean()
     ]
 
     const [test, questions] = await Promise.all(promises);
@@ -42,7 +42,7 @@ exports.updateTestController = async (req, res) => {
 exports.createTestController = async (req, res) => {
   try {
     const data = req.body;
-    data.nameId = data.nameEn.toLowerCase().split(' ').join('_') + `_${data.yearStart}`
+    data.nameId = data.testPassword.toLowerCase().split(' ').join('_') //+ `_${data.yearStart}`
     const test = await Test.create(data);
     res.json({ success: true, test });
   } catch (e) {

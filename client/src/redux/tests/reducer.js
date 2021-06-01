@@ -85,18 +85,20 @@ export const testsReducer = (state = baseState, action) => {
             ...state.currentTest.adminQuestions,
             [id]: {
               testId: action.payload,
-              subtitlesUrlRu: undefined,
-              subtitlesUrlEn: undefined,
-              questionUrl: undefined,
-              words: [],
-              nameEn: '',
-              nameTest: 'Новое видео',
-              durationMin: 0,
-              durationSec: 0,
+              // subtitlesUrlRu: undefined,
+              // subtitlesUrlEn: undefined,
+              question: '',
+              answer1: '',
+              answer2: '',
+              answer3: '',
+              //nameQuestion: 'Задание 1',
+              // durationMin: 0,
+              // durationSec: 0,
               isNew: true,
+              expanded: id,
             }
           },
-          questionsList: [...state.currentTest.questionsList, id],
+          questionsList:state.currentTest.questionsList?[...state.currentTest.questionsList, id]:[id],
         }
       }
     }

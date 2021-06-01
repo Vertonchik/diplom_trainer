@@ -33,13 +33,13 @@ const Component = ({ data, getTestsList, deleteTest }) => {
             <img src={test.imgUrl} />
             <div>
               <div>{test.nameTest}</div>
-              <div>{test.nameEn}</div>
+              <div>{test.descriptionTest}</div>
             </div>
 
-            <div>
+            {/* <div>
               <div>{test.yearStart}-{test.yearEnd}</div>
               <div>{test.typeName}</div>
-            </div>
+            </div> */}
 
             <div>
               <Button onClick={e => onDeleteTest(e, test._id)} className={classname('Item-Delete')} variant='contained'>Удалить</Button>

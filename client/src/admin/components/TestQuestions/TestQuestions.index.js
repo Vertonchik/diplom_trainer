@@ -4,7 +4,7 @@ import { changeQuestion, addQuestionToList, updateQuestion, createQuestion } fro
 import { selectCurrentTest } from 'redux/tests/selectors';
 
 export const mapStateToProps = state => ({
-  data: selectCurrentTest(state).questions,
+  data: selectCurrentTest(state).adminQuestions,
   list: selectCurrentTest(state).questionsList
 })
 

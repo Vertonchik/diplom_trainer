@@ -1,0 +1,13 @@
+.PageTest {
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    margin-top: 50px;
+    &-Tests {
+      display: flex;
+      justify-content: center;
+      gap: 34px;
+      flex-wrap: wrap;
+      padding: 0 24px;
+    }
+  }

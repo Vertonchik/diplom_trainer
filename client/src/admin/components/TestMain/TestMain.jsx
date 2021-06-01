@@ -4,7 +4,7 @@ import './TestMain.scss';
 import { connect } from 'react-redux';
 import { Input, Select, Button } from 'UI';
 // import { FileLoader } from 'components';
-import { geners, countries, testTypes } from 'utils/constants';
+import {  testTypes } from 'utils/constants';
 import { useParams, useHistory } from 'react-router-dom';
 
 const Component = ({ 
@@ -29,61 +29,61 @@ const Component = ({
         />
 
         <Input
-          value={data.nameEn}
-          label={'Название на английском'}
-          onChange={nameEn => changeCurrentTest({ nameEn })}
+          value={data.testPassword}
+          label={'Пароль к тесту'}
+          onChange={testPassword => changeCurrentTest({ testPassword })}
         />
 
         <Input
           multiline
           value={data.descriptionTest}
-          label={'Описание на русском'}
+          label={'Описание теста'}
           onChange={descriptionTest => changeCurrentTest({ descriptionTest })}
         />
 
-        <Input
+        {/* <Input
           multiline
           value={data.descriptionEn}
           label={'Описание на английском'}
           onChange={descriptionEn => changeCurrentTest({ descriptionEn })}
-        />
+        /> */}
 
-        <Input
+        {/* <Input
           value={data.rating}
           label={'Рейтинг (макс 10)'}
           onChange={rating => changeCurrentTest({ rating })}
           type='number'
-        />
+        /> */}
 
-        <Input
+        {/* <Input
           value={data.yearStart}
           label={'Год начала'}
           onChange={yearStart => changeCurrentTest({ yearStart, yearEnd: yearStart })}
           type='number'
-        />
+        /> */}
 
-        <Input
+        {/* <Input
           value={data.yearEnd}
           label={'Год окончания'}
           onChange={yearEnd => changeCurrentTest({ yearEnd })}
           type='number'
-        />
+        /> */}
 
-        <Select
+        {/* <Select
           items={geners}
           label={'Выберите жанры'}
           value={data.genres}
           multiple={true}
           onChange={value => changeCurrentTest({ genres: value.map(el => el.value) })}
-        />
+        /> */}
 
-        <Select
+        {/* <Select
           items={countries}
           label={'Выберите страны'}
           value={data.countries}
           multiple={true}
           onChange={value => changeCurrentTest({ countries: value.map(el => el.value) })}
-        />
+        /> */}
 
         <Select
           items={testTypes}

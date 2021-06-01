@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { cnMain, mapStateToProps, mapDispatchToProps } from './Main.index';
+import { cnMain, mapStateToProps, mapDispatchToProps } from './PageTest.index';
 import { connect } from 'react-redux';
-import './Main.scss';
+import './PageTest.scss';
 import { TestCard } from 'components';
 
 const Component = ({
@@ -17,7 +17,7 @@ const Component = ({
     <div className={cnMain()} style={{height: '1500px'}}>
 
       <div className={cnMain('Tests')}>
-      {/* {tests && tests.map((test) => <TestCard key={test._id} data={test} />)} */}
+      {tests && tests.map((test) => <TestCard key={test._id} data={test} />)}
       </div>
       
       
@@ -25,4 +25,4 @@ const Component = ({
   )
 }
 
-export const Main = connect(mapStateToProps, mapDispatchToProps)(Component);
+export const PageTest = connect(mapStateToProps, mapDispatchToProps)(Component);

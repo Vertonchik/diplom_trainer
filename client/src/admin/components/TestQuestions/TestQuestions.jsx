@@ -18,7 +18,7 @@ const Component = ({
   updateQuestion, 
   createQuestion,
 }) => {
-
+  console.log(data, list)
   const { testId } = useParams();
 
   const onChange = (id, changedData) => changeQuestion({ questionId: id, data: changedData })
@@ -37,8 +37,8 @@ const Component = ({
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <div className={classname('Summry')}>
                   <div>
-                    <div>{question.nameTest}</div>
-                    <div>{question.nameEn}</div>
+                    <div>{question.nameQuestion}</div>
+                    <div>{question.testPassword}</div>
                   </div>
                 </div>
               </AccordionSummary>
@@ -46,36 +46,44 @@ const Component = ({
               <AccordionDetails>
                 <div className={classname('Details')}>
                   <div>
-                    <Input
-                      value={question.nameTest}
-                      label={'Название на русском'}
-                      onChange={nameTest => onChange(id, { nameTest })}
-                    />
+                    {/* <Input
+                      value={question.nameQuestion}
+                      label={'Название задания'}
+                      onChange={nameQuestion => onChange(id, { nameQuestion })}
+                    /> */}
 
                     <Input
-                      value={question.nameEn}
-                      label={'Название на английском'}
-                      onChange={nameEn => onChange(id, { nameEn })}
+                      value={question.question}
+                      label={'Вопрос'}
+                      onChange={question => onChange(id, { question })}
                     />
                   </div>
 
                   <div>
                     <Input
                       multiline
-                      value={question.descriptionTest}
-                      label={'Описание на русском'}
-                      onChange={descriptionTest => onChange(id, { descriptionTest })}
+                      value={question.answer1}
+                      label={'Ответ 1'}
+                      onChange={answer1 => onChange(id, { answer1 })}
                     />
 
                     <Input
                       multiline
-                      value={question.descriptionEn}
-                      label={'Описание на английском'}
-                      onChange={descriptionEn => onChange(id, { descriptionEn })}
+                      value={question.answer2}
+                      label={'Ответ 2'}
+                      onChange={answer2 => onChange(id, { answer2 })}
                     />
+
+                    <Input
+                      multiline
+                      value={question.answer3}
+                      label={'Ответ 3'}
+                      onChange={answer3 => onChange(id, { answer3 })}
+                    />
+
                   </div>
 
-                  <div>
+                  {/* <div>
                     <Input
                       value={question.durationMin}
                       label={'Продолжительность в минутах'}
@@ -87,14 +95,14 @@ const Component = ({
                       label={'Продолжительность в секундах'}
                       onChange={durationSec => onChange(id, { durationSec })}
                     />
-                  </div>
+                  </div> */}
 
-                  <div>
+                  {/* <div>
                     <div className={classname('Details-Upload')}>
                       {console.log('DATA', question)}
                       <Input
                         value={question.subtitlesUrlRu}
-                        label={'Ссылка на русские субтитры'}
+                        label={'Ответ 2'}
                         onChange={subtitlesUrlRu => onChange(id, { subtitlesUrlRu })}
                       />
                       
@@ -103,14 +111,14 @@ const Component = ({
                     <div className={classname('Details-Upload')}>
                       <Input
                         value={question.subtitlesUrlEn}
-                        label={'Ссылка на английские субтитры'}
+                        label={'Ответ 3'}
                         onChange={subtitlesUrlEn => onChange(id, { subtitlesUrlEn })}
                       />
                       
                     </div>
-                  </div>
+                  </div> */}
 
-                  <div>
+                  {/* <div>
                     <div className={classname('Details-Upload')}>
                       <Input
                         value={question.questionUrl}
@@ -119,7 +127,7 @@ const Component = ({
                       />
                       
                     </div>
-                  </div>
+                  </div> */}
 
                   <Button onClick={() => {
                     question.isNew ? createQuestion({questionId: id}) : updateQuestion({questionId: id})
