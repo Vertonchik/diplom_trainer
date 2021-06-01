@@ -11,7 +11,8 @@ const baseState = {
   data: undefined,
   adminQuestions: undefined,
   questionsList: undefined,
-  loading: false
+  loading: false,
+  cuurentQuestionId: undefined,
  }
 }
 

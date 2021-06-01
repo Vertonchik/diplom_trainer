@@ -8,7 +8,8 @@ import { initUser } from 'redux/auth/actions';
 
 import { Main } from 'pages/Main/Main';
 import { Auth } from 'pages/Auth/Auth';
-import { PageTest } from 'pages/PageTest/PageTest';
+import { TestsList } from 'pages/TestsList/TestsList';
+import { TestPage } from 'pages/TestPage/TestPage';
 import { AdminPage } from 'admin/Admin';
 import { Navbar } from 'components';
 
@@ -28,9 +29,8 @@ const App = ({ isAuth, initUser }) => {
       <div className='MainLayout'>
         <Switch>
           <Route path='/' exact render={props => isAuth ? <Main /> : <Auth />} />
-          <Route path='/tests' exact render={() => <PageTest />} />
-          {/* Здесь страница с прохождением теста */}
-          {/* <Route path='/test/:testId' exact render={() => <TestPage />} />  */}
+          <Route path='/tests' exact render={() => <TestsList />} />
+          <Route path='/test/:testId' exact render={() => <TestPage />} /> 
 
           <Route path='/admin' render={() => <AdminPage />} />
 

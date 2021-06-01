@@ -2,35 +2,36 @@ import React from 'react';
 import { cnTestCard } from './TestCard.index';
 import { testTypeNames } from 'utils/constants';
 import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './TestCard.scss';
 
 export const TestCard = ({
   data
 }) => {
 
-  return <div className={cnTestCard('Wrapper')}>
-    <NavLink to={`/test/${data._id}`}>
-    <div className={cnTestCard()}>
+  const history = useHistory();
 
-      <div style={{backgroundImage: `url(${data.imgUrl})` }} className={cnTestCard('Image')}></div>
+  const testOnclick = () => {
+    if (data.testPassword) {
+      const enteredPassworf = prompt('Введите пароль');
+      if (enteredPassworf === data.testPassword) history.push(`/test/${data._id}`);
+    } else {
+      history.push(`/test/${data._id}`);
+    }
+  }
 
-      {/* <div className={cnTestCard('Rating')}>{data.rating}</div> */}
+  return <div onClick={testOnclick} className={cnTestCard('Wrapper')}>
+    {/* <NavLink to={`/test/${data._id}`}> */}
+      <div>
+        <div className={cnTestCard('Title')}>
+          {data.nameTest}
+        </div>
 
-      <div className={cnTestCard('Type')}>{testTypeNames[data.testType]}</div>
-
-      <div className={cnTestCard('Overlay')}></div>
-
-      <div className={cnTestCard('OverlayInfo')}>
-        <div className={cnTestCard('OverlayInfo-TestPassword')}>{data.testPassword}</div>
-        <div className={cnTestCard('OverlayInfo-NameTest')}>{data.nameTest}</div>
-        {/* <div className={cnTestCard('OverlayInfo-Genres')}>{data.genres.join(', ')}</div> */}
-        {/* <div className={cnTestCard('OverlayInfo-Year')}>{data.yearEnd}</div> */}
-        <div className={cnTestCard('OverlayInfo-Description')}>{data.descriptionTest}</div>
+        <div className={cnTestCard('Desc')}>
+          {data.descriptionTest}
+        </div>
       </div>
-
-    </div>
-
-    <div className={cnTestCard('Name')}>{data.testPassword}</div>
-    </NavLink>
+      
+    {/* </NavLink> */}
   </div>
 }

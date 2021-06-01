@@ -11,4 +11,4 @@ export const mapDispatchToProps = (dispatch) => bindActionCreators({
   getTestsList
 }, dispatch);
 
-export const cnMain = cn('PageTest');
+export const classname = cn('TestsList');

@@ -1,0 +1,24 @@
+.TestPage {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  margin-top: 50px;
+  background: #fff;
+  padding: 25px;
+
+  &-Question {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #000;
+    font-weight: bold;
+    font-size: 24px;
+
+    &-Answers {
+      margin-top: 25px;
+    }
+  }
+
+
+  &-Nav {
+    margin-top: 25px;
+  }
+}
