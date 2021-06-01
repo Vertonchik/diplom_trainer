@@ -23,7 +23,7 @@
 // export const countries = Object.keys(countriesNames).map(key => ({ value: key, title: countriesNames[key] }));
 
 export const testTypeNames = {
-  test: 'С вариантами ответа',
-  series: 'Письменный ответ'
+  test: 'Вариант(ы) ответа',
+  text: 'Письменный ответ'
 }
 export const testTypes = Object.keys(testTypeNames).map(key => ({ value: key, title: testTypeNames[key] }));

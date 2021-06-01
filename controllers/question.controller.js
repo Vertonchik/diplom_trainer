@@ -20,6 +20,7 @@ exports.createQuestionController = async (req, res) => {
     //const alias = urlItems[urlItems.length - 1];
 
     data.testId = testId;
+    // delete data._id
     //data.alias = alias;
 
     const question = await Question.create(data);
@@ -33,14 +34,12 @@ exports.createQuestionController = async (req, res) => {
 exports.updateQuestionController = async (req, res) => {
   try {
     const {testId, data} = req.body;
+
+    const id = data._id;
     delete data.expanded;
+    delete data._id
 
-    const urlItems = data.questionUrl.split('/');
-    const alias = urlItems[urlItems.length - 1];
-
-    data.alias = alias;
-
-    const question = await Question.findByIdAndUpdate(data._id, data);
+    const question = await Question.findByIdAndUpdate(id, data);
     res.json({ success: true, question });
   } catch (e) {
     console.log(e);

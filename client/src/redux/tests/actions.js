@@ -12,6 +12,9 @@ export const actionTypes = {
   ADD_QUESTION_TO_LIST: 'ADD_QUESTION_TO_LIST',
   UPDATE_QUESTION: 'UPDATE_QUESTION',
   CREATE_QUESTION: 'CREATE_QUESTION',
+  ADD_QUESTION_ANSWER: 'ADD_QUESTION_ANSWER',
+  DELETE_QUESTION_ANSWER: 'DELETE_QUESTION_ANSWER',
+  CHANGE_QUESTION_ANSWER: 'CHANGE_QUESTION_ANSWER',
 }
 
 /********************************************
@@ -107,5 +110,31 @@ export const changeQuestion = payload => ({
  */
 export const addQuestionToList = payload => ({
   type: actionTypes.ADD_QUESTION_TO_LIST,
+  payload
+})
+
+/**
+ * 
+ * @param {} payload {quuestionId}
+ */
+export const addQuestionAnswer = payload => ({
+  type: actionTypes.ADD_QUESTION_ANSWER,
+  payload
+})
+
+/**
+ * 
+ * @param {*} payload {questionId, answerId}
+ */
+export const deleteQuestionAnswer = payload => ({
+  type: actionTypes.DELETE_QUESTION_ANSWER,
+  payload
+})
+
+/**
+ * @param {*} payload {questionId, data, index}
+ */
+export const changeQuestionAnswer = payload => ({
+  type: actionTypes.CHANGE_QUESTION_ANSWER,
   payload
 })

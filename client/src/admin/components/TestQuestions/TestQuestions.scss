@@ -43,4 +43,19 @@
     margin-top: 25px !important;
   }
 
+  &-Answers {
+    flex-direction: column;
+    &-Item {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      & > button {
+        margin-left: 12px;
+      }
+    }
+    button {
+      width: fit-content;
+    }
+  }
+
 }

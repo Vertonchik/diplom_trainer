@@ -4,11 +4,10 @@ import './TestPreview.scss';
 import { Button } from 'UI';
 import { connect } from 'react-redux';
 
-const Component = ({data, question, setPlayerOpen, setPlayerQuestion}) => {
+const Component = ({data, question }) => {
 
   const onPlayerOpen = () => {
-    setPlayerQuestion(question);
-    setPlayerOpen(true);
+  
   }
 
   return (

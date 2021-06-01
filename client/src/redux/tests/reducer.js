@@ -1,5 +1,6 @@
 import { actionTypes } from './actions';
-import { v1 as uuid } from 'uuid';
+// import { v1 as generateId } from 'generateId';
+import { generateId } from 'utils/generateId';
 
 const baseState = {
  list: {
@@ -75,7 +76,7 @@ export const testsReducer = (state = baseState, action) => {
     }
 
     case actionTypes.ADD_QUESTION_TO_LIST: {
-      const id = uuid();
+      const id = generateId();
 
       return {
         ...state,
@@ -84,21 +85,83 @@ export const testsReducer = (state = baseState, action) => {
           adminQuestions: {
             ...state.currentTest.adminQuestions,
             [id]: {
+              _id: id,
               testId: action.payload,
-              // subtitlesUrlRu: undefined,
-              // subtitlesUrlEn: undefined,
+              type: 'test',
               question: '',
-              answer1: '',
-              answer2: '',
-              answer3: '',
-              //nameQuestion: 'Задание 1',
-              // durationMin: 0,
-              // durationSec: 0,
+              answers: [],
               isNew: true,
               expanded: id,
             }
           },
           questionsList:state.currentTest.questionsList?[...state.currentTest.questionsList, id]:[id],
+        }
+      }
+    }
+
+    case actionTypes.ADD_QUESTION_ANSWER: {
+
+      const { questionId } = action.payload;
+      const id = generateId();
+
+      const newAnswer = {
+        _id: id,
+        questionId,
+        title: '',
+        isRight: false,
+      }
+      return {
+        ...state,
+        currentTest: {
+          ...state.currentTest,
+          adminQuestions: {
+            ...state.currentTest.adminQuestions,
+            [questionId]: {
+              ...state.currentTest.adminQuestions[questionId],
+              answers: state.currentTest.adminQuestions[questionId]?.answers ? [
+                ...state.currentTest.adminQuestions[questionId]?.answers,
+                newAnswer
+              ] : [newAnswer]
+            }
+          }
+        }
+      }
+    }
+
+    case actionTypes.DELETE_QUESTION_ANSWER: {
+      const { questionId, answerId } = action.payload;
+      return {
+        ...state,
+        currentTest: {
+          ...state.currentTest,
+          adminQuestions: {
+            ...state.currentTest.adminQuestions,
+            [questionId]: {
+              ...state.currentTest.adminQuestions[questionId],
+              answers: state.currentTest.adminQuestions[questionId].answers.filter(answer => answer._id !== answerId)
+            }
+          }
+        }
+      }
+    }
+
+    case actionTypes.CHANGE_QUESTION_ANSWER: {
+      const {questionId, data, index} = action.payload;
+      return {
+        ...state,
+        currentTest: {
+          ...state.currentTest,
+          adminQuestions: {
+            ...state.currentTest.adminQuestions,
+            [questionId]: {
+              ...state.currentTest.adminQuestions[questionId],
+              answers: [
+                ...state.currentTest.adminQuestions[questionId].answers.slice(0, index),
+                { ...state.currentTest.adminQuestions[questionId].answers[index], ...data },
+                ...state.currentTest.adminQuestions[questionId].answers.slice(index + 1)
+              ]
+            }
+          }
         }
       }
     }

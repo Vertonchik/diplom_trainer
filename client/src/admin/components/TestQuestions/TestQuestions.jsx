@@ -2,13 +2,16 @@ import React, { useMemo } from 'react';
 import { classname, mapStateToProps, mapDispatchToProps } from './TestQuestions.index';
 import './TestQuestions.scss';
 import { connect } from 'react-redux';
-import { Button, Input, } from 'UI';
+import { Button, Input, Select } from 'UI';
+import {  testTypes } from 'utils/constants';
 import { useParams } from 'react-router-dom';
+import {colors} from 'UI';
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const Component = ({
   data,
@@ -17,8 +20,11 @@ const Component = ({
   addQuestionToList,
   updateQuestion, 
   createQuestion,
+  addQuestionAnswer,
+  deleteQuestionAnswer,
+  changeQuestionAnswer
 }) => {
-  console.log(data, list)
+
   const { testId } = useParams();
 
   const onChange = (id, changedData) => changeQuestion({ questionId: id, data: changedData })
@@ -37,7 +43,7 @@ const Component = ({
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <div className={classname('Summry')}>
                   <div>
-                    <div>{question.nameQuestion}</div>
+                    <div>{question.question}</div>
                     <div>{question.testPassword}</div>
                   </div>
                 </div>
@@ -60,27 +66,46 @@ const Component = ({
                   </div>
 
                   <div>
-                    <Input
-                      multiline
-                      value={question.answer1}
-                      label={'Ответ 1'}
-                      onChange={answer1 => onChange(id, { answer1 })}
+                    <Select
+                      items={testTypes}
+                      label={'Выберите Тип'}
+                      value={question.type}
+                      multiple={false}
+                      onChange={el => onChange(id, { type: el?.value })}
                     />
+                  </div>
 
-                    <Input
-                      multiline
-                      value={question.answer2}
-                      label={'Ответ 2'}
-                      onChange={answer2 => onChange(id, { answer2 })}
-                    />
+                  {question.type === 'test' && <div className={classname('Answers')}>
+                    {console.log('ANSWERS', question, data)}
+                    {question.answers?.map((answer, index) => {
 
-                    <Input
-                      multiline
-                      value={question.answer3}
-                      label={'Ответ 3'}
-                      onChange={answer3 => onChange(id, { answer3 })}
-                    />
+                      return (
+                        <div className={classname('Answers-Item')}>
+                          <Checkbox
+                            checked={answer.isRight}
+                            style={{color: colors.blue}}
+                            // className={classname('Answers-Item-Right')}
+                            onChange={event => changeQuestionAnswer({ questionId: question._id, index, data: {isRight: event.target.checked} })}
+                          />
+                          <Input
+                            value={answer.title}
+                            onChange={title => changeQuestionAnswer({ questionId: question._id, index, data: {title} })}
+                            label={'Текст ответа'}
+                          />
+                          <Button onClick={() => deleteQuestionAnswer({ questionId: question._id, answerId: answer._id })}>
+                            Удалить
+                          </Button>
+                        </div>
+                      )
+                    })}
+                    
+                    <Button  variant='contained' onClick={() => addQuestionAnswer({ questionId: question._id })}>
+                      Добавить вариант ответа
+                    </Button>
+                  </div>}
 
+                  <div>
+                    
                   </div>
 
                   {/* <div>

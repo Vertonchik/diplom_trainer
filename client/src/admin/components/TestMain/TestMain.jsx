@@ -2,9 +2,7 @@ import React from 'react';
 import { classname, mapStateToProps, mapDispatchToProps } from './TestMain.index';
 import './TestMain.scss';
 import { connect } from 'react-redux';
-import { Input, Select, Button } from 'UI';
-// import { FileLoader } from 'components';
-import {  testTypes } from 'utils/constants';
+import { Input, Button } from 'UI';
 import { useParams, useHistory } from 'react-router-dom';
 
 const Component = ({ 
@@ -41,57 +39,7 @@ const Component = ({
           onChange={descriptionTest => changeCurrentTest({ descriptionTest })}
         />
 
-        {/* <Input
-          multiline
-          value={data.descriptionEn}
-          label={'Описание на английском'}
-          onChange={descriptionEn => changeCurrentTest({ descriptionEn })}
-        /> */}
-
-        {/* <Input
-          value={data.rating}
-          label={'Рейтинг (макс 10)'}
-          onChange={rating => changeCurrentTest({ rating })}
-          type='number'
-        /> */}
-
-        {/* <Input
-          value={data.yearStart}
-          label={'Год начала'}
-          onChange={yearStart => changeCurrentTest({ yearStart, yearEnd: yearStart })}
-          type='number'
-        /> */}
-
-        {/* <Input
-          value={data.yearEnd}
-          label={'Год окончания'}
-          onChange={yearEnd => changeCurrentTest({ yearEnd })}
-          type='number'
-        /> */}
-
-        {/* <Select
-          items={geners}
-          label={'Выберите жанры'}
-          value={data.genres}
-          multiple={true}
-          onChange={value => changeCurrentTest({ genres: value.map(el => el.value) })}
-        /> */}
-
-        {/* <Select
-          items={countries}
-          label={'Выберите страны'}
-          value={data.countries}
-          multiple={true}
-          onChange={value => changeCurrentTest({ countries: value.map(el => el.value) })}
-        /> */}
-
-        <Select
-          items={testTypes}
-          label={'Выберите Тип'}
-          value={data.testType}
-          multiple={false}
-          onChange={value => changeCurrentTest({ testType: value?.value })}
-        />
+       
 
       </div>
 

@@ -33,7 +33,7 @@ function* getCurrentTestSaga(action) {
       questionsList.push(question._id);
     });
 
-    yield put(setCurrentTest({ data: test, questions, questionsList }));
+    yield put(setCurrentTest({ data: test, questions, adminQuestions: questions, questionsList }));
 
     yield put(setCurrentTest({ loading: false }));
   } catch (e) {
@@ -114,7 +114,7 @@ function* createQuestionSaga(action) {
     const response = yield call(createQuestionRequest, test.data._id, question);
     if (response.data.success) {
       console.log('question created');
-      yield put(changeQuestion({ questionId, data: { isNew: false } }));
+      yield put(changeQuestion({ questionId, data: { _id: response.data.question._id, isNew: false } }));
       toast.success('Вопрос создан');
     } else {
       toast.error('Ошибка');
