@@ -167,6 +167,24 @@ export const testsReducer = (state = baseState, action) => {
       }
     }
 
+
+    case actionTypes.CHANGE_CURRENT_TEST_QUESTION: {
+      const {questionId, data} = action.payload;
+      return { 
+        ...state,
+        currentTest: {
+          ...state.currentTest,
+          questions: {
+            ...state.currentTest.questions,
+            [questionId]: {
+              ...state.currentTest.questions[questionId],
+              ...data
+            }
+          }
+        }
+      }
+    }
+
     default: {
       return state
     }

@@ -15,6 +15,7 @@ export const actionTypes = {
   ADD_QUESTION_ANSWER: 'ADD_QUESTION_ANSWER',
   DELETE_QUESTION_ANSWER: 'DELETE_QUESTION_ANSWER',
   CHANGE_QUESTION_ANSWER: 'CHANGE_QUESTION_ANSWER',
+  CHANGE_CURRENT_TEST_QUESTION: 'CHANGE_CURRENT_TEST_QUESTION',
 }
 
 /********************************************
@@ -136,5 +137,10 @@ export const deleteQuestionAnswer = payload => ({
  */
 export const changeQuestionAnswer = payload => ({
   type: actionTypes.CHANGE_QUESTION_ANSWER,
+  payload
+})
+
+export const changeCurrentTestQuestion = payload => ({
+  type: actionTypes.CHANGE_CURRENT_TEST_QUESTION,
   payload
 })

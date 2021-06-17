@@ -3,9 +3,9 @@ import { classname, mapStateToProps, mapDispatchToProps } from './TestQuestions.
 import './TestQuestions.scss';
 import { connect } from 'react-redux';
 import { Button, Input, Select } from 'UI';
-import {  testTypes } from 'utils/constants';
+import { testTypes } from 'utils/constants';
 import { useParams } from 'react-router-dom';
-import {colors} from 'UI';
+import { colors } from 'UI';
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -18,7 +18,7 @@ const Component = ({
   list,
   changeQuestion,
   addQuestionToList,
-  updateQuestion, 
+  updateQuestion,
   createQuestion,
   addQuestionAnswer,
   deleteQuestionAnswer,
@@ -75,6 +75,15 @@ const Component = ({
                     />
                   </div>
 
+                  {question.type === 'text' && <div className={classname('Answers')}>
+
+                    <Input
+                      onChange={rightAnswer => onChange(id, { rightAnswer })}
+                      value={question.rightAnswer}
+                      label={'Правильный ответ'}
+                    />
+                  </div>}
+
                   {question.type === 'test' && <div className={classname('Answers')}>
                     {console.log('ANSWERS', question, data)}
                     {question.answers?.map((answer, index) => {
@@ -83,13 +92,13 @@ const Component = ({
                         <div className={classname('Answers-Item')}>
                           <Checkbox
                             checked={answer.isRight}
-                            style={{color: colors.blue}}
+                            style={{ color: colors.blue }}
                             // className={classname('Answers-Item-Right')}
-                            onChange={event => changeQuestionAnswer({ questionId: question._id, index, data: {isRight: event.target.checked} })}
+                            onChange={event => changeQuestionAnswer({ questionId: question._id, index, data: { isRight: event.target.checked } })}
                           />
                           <Input
                             value={answer.title}
-                            onChange={title => changeQuestionAnswer({ questionId: question._id, index, data: {title} })}
+                            onChange={title => changeQuestionAnswer({ questionId: question._id, index, data: { title } })}
                             label={'Текст ответа'}
                           />
                           <Button onClick={() => deleteQuestionAnswer({ questionId: question._id, answerId: answer._id })}>
@@ -98,14 +107,14 @@ const Component = ({
                         </div>
                       )
                     })}
-                    
-                    <Button  variant='contained' onClick={() => addQuestionAnswer({ questionId: question._id })}>
+
+                    <Button variant='contained' onClick={() => addQuestionAnswer({ questionId: question._id })}>
                       Добавить вариант ответа
                     </Button>
                   </div>}
 
                   <div>
-                    
+
                   </div>
 
                   {/* <div>
@@ -155,7 +164,7 @@ const Component = ({
                   </div> */}
 
                   <Button onClick={() => {
-                    question.isNew ? createQuestion({questionId: id}) : updateQuestion({questionId: id})
+                    question.isNew ? createQuestion({ questionId: id }) : updateQuestion({ questionId: id })
                   }} variant='contained'>
                     {question.isNew ? 'Создать' : 'Изменить'}
                   </Button>

@@ -5,6 +5,7 @@ const Question = new Schema({
   question: { type: String, required: true },
   type: { type: String, required: true },
   answers: {type: [Schema.Types.Mixed]},
+  rightAnswer: { type: String }
 });
 
 module.exports = model('Question', Question);

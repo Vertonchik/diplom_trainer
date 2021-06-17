@@ -22,3 +22,36 @@
     margin-top: 25px;
   }
 }
+
+
+.TestPageResults {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  margin-top: 50px;
+  background: #fff;
+  padding: 25px;
+
+
+  &-Progress {
+    position: relative;
+    width: 600px;
+    height: 30px;
+    margin-top: 20px;
+
+    &-Main {
+      position: absolute;
+      width: 100%;
+      background-color: #ccc;
+      height: 30px;
+      border-radius: 30px;
+    }
+
+    &-Right {
+      position: absolute;
+      background-color: #36c92e;
+      height: 30px;
+      border-radius: 30px;
+    }
+  }
+}
